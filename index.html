@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="mainPage">
+    <head>
+        <title>Main page</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.js"></script>
+    </head>
+    <body>
+        <p>
+            Search:
+            <input ng-model="name" />
+        </p>
+
+        <ul ng-controller="mainCtrl">
+            <li ng-repeat="page in pages | filter:name " class="thumbnail">
+                <a href="{{page.route}}">{{page.name}}</a>
+            </li>
+        </ul>
+
+        <script>
+            var pageList = angular.module('mainPage', []);
+
+            pageList.controller('mainCtrl', function ($scope) {
+                $scope.pages = [
+                    {
+                        route: '/example1',
+                        name: 'Example 1'
+                    },
+                    {
+                        route: '/example2',
+                        name: 'Example 2'
+                    },
+                    {
+                        route: '/example3',
+                        name: 'Example 3'
+                    }
+                ]
+            })
+        </script>
+    </body>
+</html>
