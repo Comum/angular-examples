@@ -20,28 +20,16 @@
             var pageList = angular.module('mainPage', []);
 
             pageList.controller('mainCtrl', function ($scope) {
-                $scope.pages = [
-                    {
-                        route: '/example1',
-                        name: 'Example 1'
-                    },
-                    {
-                        route: '/example2',
-                        name: 'Example 2'
-                    },
-                    {
-                        route: '/example3',
-                        name: 'Example 3'
-                    },
-                    {
-                        route: '/example4',
-                        name: 'Example 4'
-                    },
-                    {
-                        route: '/example5',
-                        name: 'Example 5'
-                    }
-                ]
+                var i;
+
+                $scope.pages = [];
+
+                for (i = 1 ; i <= 6 ; i++) {
+                    $scope.pages.push({
+                        route: '/example' + i,
+                        name: 'Example ' + i
+                    });
+                }
             })
         </script>
     </body>
