@@ -2,35 +2,28 @@
 <html ng-app="mainPage">
     <head>
         <title>Main page</title>
+        <link rel="stylesheet" href="mainStyle/style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.js"></script>
     </head>
-    <body>
+    <body ng-controller="mainCtrl">
         <p>
             Search:
-            <input ng-model="name" />
+            <input ng-model="name" ng-change="updateName()" />
         </p>
 
-        <ul ng-controller="mainCtrl">
+        <!-- unnecessary element -->
+        <ul class="{{fullPageListStyle}}">
             <li ng-repeat="page in pages | filter:name " class="thumbnail">
                 <a href="{{page.route}}">{{page.name}}</a>
             </li>
         </ul>
 
-        <script>
-            var pageList = angular.module('mainPage', []);
+        <ul class="{{filteredPageListStyle}}">
+            <li ng-repeat="page in pagesInView | filter:name " class="thumbnail">
+                <a href="{{page.route}}">{{page.name}}</a>
+            </li>
+        </ul>
 
-            pageList.controller('mainCtrl', function ($scope) {
-                var i;
-
-                $scope.pages = [];
-
-                for (i = 1 ; i <= 11 ; i++) {
-                    $scope.pages.push({
-                        route: '/example' + i,
-                        name: 'Example ' + i
-                    });
-                }
-            })
-        </script>
+        <script src="mainApp/app.js"></script>
     </body>
 </html>
