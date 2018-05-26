@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <title>Simple app</title>
+        <link rel="stylesheet" href="http://cdn.jsdelivr.net/foundation/4.3.2/css/foundation.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.js"></script>
+        <style>
+            #parentCtrl {
+                background-color: yellow;
+                padding: 10px;
+            }
+            #childCtrl {
+                background-color: green;
+                padding: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <p>We can access: {{ rootProperty }}</p>
+        <div id="parentCtrl" ng-controller="ParentCtrl">
+            <p>We can access: {{ rootProperty }}</p>
+            <div id="childCtrl" ng-controller="ChildCtrl">
+                <p>
+                    We can access:
+                    {{ rootProperty }} and
+                    {{ parentProperty }} and
+                    {{ childProperty }} 
+                </p>
+                <p>{{ fullSentenceFromChild }}</p>
+            </div>
+        </div>
+
+        <script src="js/app.js"></script>
+    </body>
+</html>
