@@ -4,7 +4,7 @@ var pageMultiplier = 5;
 function generatePagesLinks() {
     var links = [];
 
-    for (i = 1 ; i <= 11 ; i++) {
+    for (i = 1 ; i <= 12 ; i++) {
         links.push({
             route: '/example' + i,
             name: 'Example ' + i
