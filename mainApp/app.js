@@ -4,8 +4,6 @@ pageList.controller('mainCtrl', function ($scope) {
     var i;
 
     $scope.pages = [];
-    $scope.fullPageListStyle = 'display-none';
-    $scope.filteredPageListStyle = '';
 
     console.log($scope)
 
@@ -16,17 +14,17 @@ pageList.controller('mainCtrl', function ($scope) {
         });
     }
 
-    $scope.pagesInView = $scope.pages.slice(5, 10);
+    function getPagesInView(index) {
+        return $scope.pages.slice(index * 5, (index + 1) * 5);
+    }
+
+    $scope.pagesInView = getPagesInView(0);
 
     $scope.updateName = function () {
-        // instead of having two elements update the pagesInView value to all of pages
-
         if (this.name.length) {
-            $scope.fullPageListStyle = '';
-            $scope.filteredPageListStyle = 'display-none';
+            $scope.pagesInView = $scope.pages;
         } else {
-            $scope.fullPageListStyle = 'display-none';
-            $scope.filteredPageListStyle = '';
+            $scope.pagesInView = getPagesInView(0);
         }
     };
 })

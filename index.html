@@ -11,13 +11,6 @@
             <input ng-model="name" ng-change="updateName()" />
         </p>
 
-        <!-- unnecessary element -->
-        <ul class="{{fullPageListStyle}}">
-            <li ng-repeat="page in pages | filter:name " class="thumbnail">
-                <a href="{{page.route}}">{{page.name}}</a>
-            </li>
-        </ul>
-
         <ul class="{{filteredPageListStyle}}">
             <li ng-repeat="page in pagesInView | filter:name " class="thumbnail">
                 <a href="{{page.route}}">{{page.name}}</a>
