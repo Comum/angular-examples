@@ -6,16 +6,36 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.js"></script>
     </head>
     <body ng-controller="mainCtrl">
-        <p>
-            Search:
-            <input ng-model="name" ng-change="updateName()" />
-        </p>
+        <div class="mainContainer">
+            <div class="row row-search">
+                Search:
+                <input ng-model="name" ng-change="updateName()" />
+            </div>
+    
+            <div class="row row-content">
+                <ul class="exampleList {{filteredPageListStyle}}">
+                    <li ng-repeat="page in pagesInView | filter:name " class="thumbnail">
+                        <a href="{{page.route}}">{{page.name}}</a>
+                    </li>
+                </ul>
+            </div>
 
-        <ul class="{{filteredPageListStyle}}">
-            <li ng-repeat="page in pagesInView | filter:name " class="thumbnail">
-                <a href="{{page.route}}">{{page.name}}</a>
-            </li>
-        </ul>
+            <div class="row row-nav">
+                <div class="nav-bar">
+                    <div class="nav-left cursor-pointer no-select-text"
+                         ng-click="decreasePage()"
+                         ng-class="{'button-disabled': minPageReached}">
+                        &#9665;
+                    </div>
+                    <div class="nav-index">{{ pagesIndex + 1 }}</div>
+                    <div class="nav-right cursor-pointer no-select-text"
+                         ng-click="increasePage()"
+                         ng-class="{'button-disabled': maxPageReached}">
+                        &#9655;
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <script src="mainApp/app.js"></script>
     </body>
